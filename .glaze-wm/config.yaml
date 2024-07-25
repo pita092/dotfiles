@@ -1,0 +1,342 @@
+focus_borders: 
+  active: 
+    enabled: true
+    color: "#81A1C1"
+  inactive: 
+    enabled: false
+
+gaps:
+  inner_gap: "7px"
+  outer_gap: "7px"
+
+general:
+  show_floating_on_top: true
+  cursor_follows_focus: false
+  focus_follows_cursor: false
+  # launch_windows: < Tiled | Floating | Minimized | Maxamized >
+
+horiz_bar: &horizontal_bar
+  offset_x: 12
+  offset_y: 12
+  font_family: "JetBrainsMono Nerd Font"
+  height: 30 
+  border_radius: 6
+  position: "top"
+  background: "#3B4252"
+  foreground: "81A1C1"
+  font_size: "13px"
+  border_color: "434C5E"
+  border_width: 1
+  vertical: "v"
+  horizontal: "b"
+  components_left:    
+    - type: "workspaces"
+      focused_workspace_background: 
+      focused_workspace_foreground: "#88C0D0"
+      displayed_workspace_background: 
+      displayed_workspace_foreground: "#D8DEE9"
+      default_workspace_background:
+      default_workspace_foreground: "#D8DEE9" 
+    #- type: "system stats"
+    # - type: "text"👍
+    #   text: "  "
+    # # - type: "music"
+    # - type: "weather"
+    #   temperature_unit: "fahrenheit"
+    #   timezone: "EST"
+    #   latitude: 40.0084
+    #   longitude: -79.0786
+    # - type: "media"
+  components_center:
+  components_right: 
+    #- type: "system tray"
+    # padding: "4px 6px"
+    # foreground: "#a39d8d"
+    - type: "network"
+      foreground: "#ffffff"
+      padding: "0 8px"
+      font_family: "JetBrainsMono Nerd Font"
+      label_no_internet: ""
+      label_ethernet: "󰈁"
+      label_wifi_strength_0: "󰤯"
+      label_wifi_strength_25: "󰤟"
+      label_wifi_strength_50: "󰤢"
+      label_wifi_strength_75: "󰤥"
+      label_wifi_strength_100: "󰤨"
+    # - type: "battery"
+    #   label_draining: "{battery_level}% remaining"
+    #   label_power_saver: "{battery_level}%"
+    #   label_charging: "{battery_level}%"
+    - type: "binding mode"
+      background: "#81A1C1" 
+      margin: "0 4px 0 0"
+      padding: "0 8px"
+    - type: "clock"
+      foreground: "#81A1C1"     
+      time_formatting: "hh:mm:ss tt  ddd MMM d  "
+      margin: "0 0 0 10px"
+
+vert_bar: &vertical_bar
+  << : *horizontal_bar
+  components_left:
+  - type: "text"
+    text: " h~ "
+    foreground: "#7ce48b"
+  - type: "workspaces"
+  components_right:
+  - type: "tiling direction"
+    label_horizontal: "⮂"
+    label_vertical: "⮁"
+    background: "#ffffff"
+    foreground: "#ffffff"
+    margin: "0 4px"
+    padding: "0 8px"
+  - type: "binding mode"
+    background: "#ffffff"
+    margin: "0 4px 0 0"
+    padding: "0 8px"
+  - type: "clock"
+    foreground: "#ffffff"
+    time_formatting: "hh:mm tt  M/d"
+    margin: "0 0 0 10px"
+
+bars:
+  - bind_to_monitor: 1
+    <<: *horizontal_bar
+  - bind_to_monitor: 2
+    <<: *vertical_bar
+  - bind_to_monitor: 3
+    <<: *horizontal_bar
+
+workspaces:
+  - name: "1"
+    display_name: " "
+  - name: "2"
+    display_name: " "
+  - name: "3"
+    display_name: " "
+  - name: "4"
+    display_name: " "
+  - name: "5"
+    display_name: " "
+  - name: "6"
+    display_name: "󰨞 "
+  - name: "7"
+    display_name: " "
+  - name: "8"
+    display_name: " "
+  - name: "9"
+    display_name: " "
+  - name: "0"
+    display_name: "󰅶 "
+
+window_rules:
+  # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
+  - command: "set floating"
+    match_class_name: "#32770"
+ 
+  - command: "resize borders 0px -7px -7px -7px"
+    match_process_name: "steam|vivaldi"
+
+  - command: "resize borders 0px -7px -7px -7px"
+    match_title: "Overdrive - Unreal Editor|Overdrive - Live Coding"
+ 
+  - command: "ignore"
+    match_process_name: "keyviz|tauri|velocidrone|RustClient|Rust|Taskmgr"
+ 
+  - command: "set floating"
+    match_class_name: "SunAwtDialog"
+ 
+  # - command: "set floating"
+  #   match_process_name: "UnrealVersionSelector"
+  # 
+  # - command: "ignore"
+  #   #match_process_name: "UnrealEditor"
+  #   match_title: "Message Log|Open Asset|Open Level|New Level"
+ 
+  - command: "set floating"
+    match_title: "Harpoon"
+  
+  - command: 'set floating'
+    match_process_name: 'UnrealEditor-Win64-DebugGame'
+    # match_process_name: 'Overdrive [DebugGame] - Unreal Editor'
+
+  - command: 'set tiling'
+    match_process_name: 'UnrealEditor-Win64-DebugGame'
+    match_title: '/^(?!Open Asset).*$/'
+    on: ['manage', 'first_focus', 'first_title_change']
+
+  # - command: "set roundedwindow"
+  #   match_title: "Overdrive - Unreal Editor|Overdrive - Live Coding"
+  # - command: "set roundedwindow"
+  #   match_process_name: "vivaldi"
+  # - command: "set roundedwindow"
+  #   match_process_name: "LiveCodingConsole"
+  # - command: "hide titlebar"
+  #   match_process_name: "betaflight-configurator|Code"
+  # - command: "hide titlebar"
+  #   match_process_name: "betaflight-configurator|Code"
+
+binding_modes:
+  - name: "resize"
+    keybindings:
+      # Resize focused window by a percentage or pixel amount.
+      - command: "resize width -2%"
+        bindings: ["H", "Left"]
+      - command: "resize width +2%"
+        bindings: ["L", "Right"]
+      - command: "resize height +2%"
+        bindings: ["K", "Up"]
+      - command: "resize height -2%"
+        bindings: ["J", "Down"]
+      # Press enter/escape to return to default keybindings.
+      - command: "binding mode none"
+        bindings: ["Escape", "Enter"]
+
+keybindings:
+  # Shift focus in a given direction.
+  - command: "focus left"
+    bindings: ["Alt+H", "Alt+Left"]
+  - command: "focus right"
+    bindings: ["Alt+L", "Alt+Right"]
+  - command: "focus up"
+    bindings: ["Alt+K", "Alt+Up"]
+  - command: "focus down"
+    bindings: ["Alt+J", "Alt+Down"]
+
+  # Move focused window in a given direction.
+  - command: "move left"
+    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+  - command: "move right"
+    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+  - command: "move up"
+    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+  - command: "move down"
+    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+
+  # Resize focused window by a percentage or pixel amount.
+  - command: "resize width -2%"
+    binding: "Alt+U"
+
+  # Resize focused window by a percentage or pixel amount.
+  - command: "resize width -2%"
+    binding: "Alt+U"
+  - command: "resize width +2%"
+    binding: "Alt+P"
+  - command: "resize height +2%"
+    binding: "Alt+O"
+  - command: "resize height -2%"
+    binding: "Alt+I"
+
+  # As an alternative to the resize keybindings above, resize mode enables resizing via
+  # HJKL or arrow keys. The binding mode is defined above with the name "resize".
+  - command: "binding mode resize"
+    binding: "Alt+R"
+
+  # Change tiling direction. This determines where new tiling windows will be inserted.
+  # - command: "tiling direction horizontal"
+  #   binding: "Alt+Shift+V"
+  # - command: "tiling direction vertical"
+  #   binding: "Alt+V"
+  - command: "tiling direction toggle"
+    binding: "Alt+V"
+
+  # Change focus between floating / tiling windows.
+  - command: "toggle focus mode"
+    binding: "Alt+End"
+
+  # Change the focused window to be floating / tiling.
+  - command: "toggle floating"
+    binding: "Alt+Shift+Space"
+
+  # Change the focused window to be maximized / unmaximized.
+  - command: "toggle maximized"
+    binding: "Alt+X"
+
+  # Minimize focused window.
+  - command: "set minimized"
+    binding: "Alt+M"
+
+  # Close focused window.
+  - command: "close"
+    binding: "Alt+Shift+Q"
+
+  # Kill GlazeWM process safely.
+  - command: "exit wm"
+    binding: "Alt+Shift+E"
+
+  # Re-evaluate configuration file.
+  - command: "reload config"
+    binding: "Alt+Shift+R"
+
+  # - command: "exec %LocalAppData%\\Microsoft\\WindowsApps\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\wt.exe"
+  - command: "exec %UserProfile%\\scoop\\apps\\wezterm\\current\\wezterm-gui.exe"
+    binding: "Alt+Enter"
+
+  - command: "exec firefox" 
+    binding: "Alt+OemPipe"
+
+  - command: "exec yazi"
+    binding: "Alt+Shift+OemPipe"
+
+  # Focus the workspace that last had focus.
+  - command: "focus workspace recent"
+    binding: "Alt+Y"
+
+  # Focus the next/previous workspace defined in `workspaces` config.
+  - command: "focus workspace next"
+    binding: "Alt+T"
+  - command: "focus workspace prev"
+    binding: "Alt+Shift+T"
+
+  # Change focus to a workspace defined in `workspaces` config.
+  - command: "focus workspace 1"
+    binding: "Alt+1"
+  - command: "focus workspace 2"
+    binding: "Alt+2"
+  - command: "focus workspace 3"
+    binding: "Alt+3"
+  - command: "focus workspace 4"
+    binding: "Alt+4"
+  - command: "focus workspace 5"
+    binding: "Alt+5"
+  - command: "focus workspace 6"
+    binding: "Alt+6"
+  - command: "focus workspace 7"
+    binding: "Alt+7"
+  - command: "focus workspace 8"
+    binding: "Alt+8"
+  - command: "focus workspace 9"
+    binding: "Alt+9"
+
+  # Move focused workspace to a monitor in a given direction.
+  - command: "move workspace left"
+    binding: "Alt+A"
+  - command: "move workspace right"
+    binding: "Alt+F"
+  - command: "move workspace up"
+    binding: "Alt+D"
+  - command: "move workspace down"
+    binding: "Alt+S"
+
+  # Move focused window to a workspace defined in `workspaces` config.
+  - commands: ["move to workspace 1", "focus workspace 1"]
+    binding: "Alt+Shift+1"
+  - commands: ["move to workspace 2", "focus workspace 2"]
+    binding: "Alt+Shift+2"
+  - commands: ["move to workspace 3", "focus workspace 3"]
+    binding: "Alt+Shift+3"
+  - commands: ["move to workspace 4", "focus workspace 4"]
+    binding: "Alt+Shift+4"
+  - commands: ["move to workspace 5", "focus workspace 5"]
+    binding: "Alt+Shift+5"
+  - commands: ["move to workspace 6", "focus workspace 6"]
+    binding: "Alt+Shift+6"
+  - commands: ["move to workspace 7", "focus workspace 7"]
+    binding: "Alt+Shift+7"
+  - commands: ["move to workspace 8", "focus workspace 8"]
+    binding: "Alt+Shift+8"
+  - commands: ["move to workspace 9", "focus workspace 9"]
+    bindings: ["Alt+Shift+9"]
+
+

@@ -63,6 +63,8 @@ its my own nvim config i made myself :)
 had a fun time making it and if you are intrested go check it out
 as the rest of my stuff it uses the nord theme
 
+nvim2 is a rewrite i made it currently has less plugins but i like the way its orginized better now :D
+
 screenshots:
 
 ![alt text](https://github.com/pita092/images-for-repos/blob/main/image123456.png?raw=true)

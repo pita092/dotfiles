@@ -82,5 +82,4 @@ screenshots:
 
 5️⃣: wezterm
 
-my simple wezterm config file (this)[https://github.com/wez/wezterm]
-
+my simple wezterm config file ![alt text](https://github.com/wez/wezterm)
